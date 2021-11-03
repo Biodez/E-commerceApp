@@ -7,5 +7,3 @@ MVP (What I must Include):
 
 What I will like to have
     - All the User functionalities.
-
-    
