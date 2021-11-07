@@ -74,7 +74,7 @@ const protected = (request, response) => {
 
 const logout = (request, response) => {
   response.clearCookie("admintoken");
-  response.json({ message: "logout succesful!!!" });
+  response.status(200).json({ message: "logout succesful!!!" });
 };
 
 module.exports = {

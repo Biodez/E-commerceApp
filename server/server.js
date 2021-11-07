@@ -8,9 +8,10 @@ app.use(cookieParser());
 app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const adminRoute = require("../server/routes/admin.routes")
-adminRoute(app)
-
+const adminRoute = require("../server/routes/admin.routes");
+const productRoute = require("./routes/product.routes")
+adminRoute(app);
+productRoute(app)
 
 require("./config/mongoose.config");
 

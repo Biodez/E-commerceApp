@@ -16,6 +16,10 @@
   margin-top: 200px;
 }
 
+#main {
+  margin-top: 100px;
+}
+
 .btn-format {
   background-color: #00203fff;
   border: none;
@@ -26,6 +30,10 @@
   display: inline-block;
   font-size: 16px;
   margin-right: 10px;
+}
+
+#adminContainer {
+  display: flex;
 }
 
 .App-logo {

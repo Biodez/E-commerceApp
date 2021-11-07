@@ -94,7 +94,7 @@ function AdminSignUp() {
                 <label htmlFor="password">Password: </label>
                 <br />
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   id="password"
                   value={password}
@@ -129,7 +129,7 @@ function AdminSignUp() {
                 <label htmlFor="confirmPassword">Confirm Password: </label>
                 <br />
                 <input
-                  type="text"
+                  type="password"
                   name="confirmPassword"
                   id="confirmPassword"
                   value={confirmPassword}

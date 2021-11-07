@@ -25,12 +25,13 @@ function AdminSignIn() {
       })
       .then((response) => {
         setSuccessMessage(response.data.message);
+        navigate("/display");
       })
       .catch((err) => setError(err.response.data.err));
   };
   return (
     <div id="form_signIn">
-      <form onSubmit = {handleLogin}>
+      <form onSubmit={handleLogin}>
         <h2
           style={{
             maxWidth: "500px",
@@ -71,7 +72,7 @@ function AdminSignIn() {
             <div style={{ marginBottom: "20px", textAlign: "center" }}>
               <label htmlFor="password">Password: </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
                 value={password}
