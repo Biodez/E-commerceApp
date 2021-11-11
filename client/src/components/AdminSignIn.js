@@ -5,7 +5,6 @@ import axios from "axios";
 function AdminSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -24,10 +23,10 @@ function AdminSignIn() {
         withCredentials: true,
       })
       .then((response) => {
-        setSuccessMessage(response.data.message);
+        console.log(response.data.message);
         navigate("/display");
       })
-      .catch((err) => setError(err.response.data.err));
+      .catch((err) => setError(err.response.data.error));
   };
   return (
     <div id="form_signIn">
@@ -43,6 +42,13 @@ function AdminSignIn() {
         >
           Admin Sign In Portal
         </h2>
+        {error && (
+          <h3
+            style={{ color: "red", textAlign: "center", fontFamily: "fantasy", fontSize: "small" }}
+          >
+            {error}
+          </h3>
+        )}
         <div
           style={{
             maxWidth: "500px",

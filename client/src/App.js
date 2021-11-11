@@ -15,7 +15,7 @@ function App() {
         <AdminSignIn path="/signin" />
         <AdminDisplay path="/display" />
         <Main path="/product" />
-        <ProductEdit path="/" />
+        <ProductEdit path="/home" />
         <Update path="/edit/:id" />
       </Router>
     </div>

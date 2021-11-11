@@ -20,6 +20,18 @@
   margin-top: 100px;
 }
 
+#edit_page {
+  margin-top: 200px;
+}
+
+#update_page {
+  margin-top: 150px;
+}
+
+#adminContainer {
+  margin-top: 150px;
+}
+
 .btn-format {
   background-color: #00203fff;
   border: none;

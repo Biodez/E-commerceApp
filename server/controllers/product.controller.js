@@ -39,7 +39,7 @@ const updateProduct = (request, response) => {
   })
     .then((productUpdated) => response.json(productUpdated))
     .catch((err) => {
-      response.status(400).json(err);
+      response.status(404).json(err);
     });
 };
 

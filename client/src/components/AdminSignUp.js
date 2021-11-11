@@ -9,7 +9,7 @@ function AdminSignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [ssn, setSSN] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -27,8 +27,8 @@ function AdminSignUp() {
       await axios.post("http://localhost:8000/api/signup", postData);
       navigate("/signin");
     } catch (err) {
-      console.log(err.response.data.errors);
-      setError(err.response.data.errors);
+      console.log(err.response.data);
+      setError(err.response.data);
     }
   };
   return (
@@ -78,6 +78,16 @@ function AdminSignUp() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
               <div style={{ marginBottom: "20px" }}>
                 <label htmlFor="email">Email: </label>
@@ -89,6 +99,16 @@ function AdminSignUp() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
               <div style={{ marginBottom: "20px" }}>
                 <label htmlFor="password">Password: </label>
@@ -100,6 +120,16 @@ function AdminSignUp() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
             </div>
             <div id="rightForm">
@@ -113,6 +143,16 @@ function AdminSignUp() {
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
               <div style={{ marginBottom: "20px" }}>
                 <label htmlFor="ssn">Social Security Number (SSN): </label>
@@ -124,6 +164,16 @@ function AdminSignUp() {
                   value={ssn}
                   onChange={(e) => setSSN(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
               <div style={{ marginBottom: "20px" }}>
                 <label htmlFor="confirmPassword">Confirm Password: </label>
@@ -135,6 +185,16 @@ function AdminSignUp() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                {error && (
+                  <h3
+                    style={{
+                      color: "red",
+                      fontSize: "small",
+                    }}
+                  >
+                    {error}
+                  </h3>
+                )}
               </div>
             </div>
           </div>

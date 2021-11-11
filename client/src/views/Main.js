@@ -6,7 +6,7 @@ import Logout from "../components/Logout";
 
 function Main() {
   const [product, setProduct] = useState([]);
-  const [authError, setAuthError] = useState("");
+  // const [authError, setAuthError] = useState("");
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -26,14 +26,14 @@ function Main() {
       })
       .then((response) => {
         setProduct([...product, response.data]);
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.response.data);
-        if (err.response.status === 401) {
-          console.log("401");
-          setAuthError("you must first login to add a product");
-        }
+        // if (err.response.status === 401) {
+        //   console.log("401");
+        //   setAuthError("you must first login to add a product");
+        // }
         setErrors(err.response.data);
       });
   };
@@ -60,7 +60,7 @@ function Main() {
         initialAbout=""
         initialImageLink=""
         errors={errors}
-        authError={authError}
+        // authError={authError}
       />
     </div>
   );

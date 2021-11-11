@@ -6,7 +6,7 @@ const authenticate = (request, response, next) => {
     process.env.SECRET_KEY,
     (err, payload) => {
       if (err) {
-        response.status(400).json({ verified: false });
+        response.status(404).json({ verified: false });
       } else {
         console.log("admin is authenticated");
         next();
@@ -16,5 +16,5 @@ const authenticate = (request, response, next) => {
 };
 
 module.exports = {
-    authenticate
-}
+  authenticate,
+};

@@ -9,5 +9,10 @@ module.exports = (app) => {
     jwtMiddleware.authenticate,
     adminController.protected
   );
-  app.post("/api/logout", adminController.logout)
+  app.post("/api/logout", adminController.logout);
+  app.post(
+    "/api/profile",
+    jwtMiddleware.authenticate,
+    adminController.updateUserProfile
+  );
 };

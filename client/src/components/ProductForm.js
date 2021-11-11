@@ -9,7 +9,6 @@ function ProductForm(props) {
     initialAbout,
     initialImageLink,
     onSubmitProp,
-    authError,
     errors,
   } = props;
 
@@ -27,7 +26,7 @@ function ProductForm(props) {
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
-        {authError && (
+        {/* {authError && (
           <h3
             style={{
               maxWidth: "700px",
@@ -39,7 +38,7 @@ function ProductForm(props) {
           >
             {authError}
           </h3>
-        )}
+        )} */}
         <div
           style={{
             maxWidth: "700px",

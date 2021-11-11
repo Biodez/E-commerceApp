@@ -77,9 +77,35 @@ const logout = (request, response) => {
   response.status(200).json({ message: "logout succesful!!!" });
 };
 
+const updateUserProfile = async (request, response, next) => {
+  const { body } = request;
+  const admin = await Admin.findOne({ email: body.email });
+
+  if (admin) {
+    admin.firstName = body.firstName || admin.firstName;
+    admin.lastName = body.lastName || admin.lastName;
+    admin.email = body.email || admin.email;
+
+    if (body.password) {
+      admin.password = body.password;
+    }
+
+    try {
+      const newAdminObj = await admin.save();
+      response.json(newAdminObj);
+    } catch (err) {
+      response.status(400).json(err);
+    }
+  }
+  else {
+    response.status(404).json({message: "User does not exist"})
+  }
+};
+
 module.exports = {
   signUp,
   signIn,
   protected,
   logout,
+  updateUserProfile,
 };

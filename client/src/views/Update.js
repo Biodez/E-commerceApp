@@ -7,6 +7,7 @@ function Update(props) {
   const { id } = props;
   const [product, setProduct] = useState();
   const [loaded, setLoaded] = useState(false);
+  const [authError, setAuthError] = useState("");
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -27,39 +28,57 @@ function Update(props) {
       })
       .then((response) => {
         console.log(response);
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.response.data);
+        if (err.response.status === 404) {
+          console.log("404");
+          setAuthError("you must first login to update a product");
+        }
         setErrors(err.response.data);
       });
   };
   return (
-    <div>
-      <h2
+    <div id="edit_page">
+      <div
         style={{
-          maxWidth: "500px",
+          maxWidth: "90%",
           width: "100%",
           margin: "auto",
-          textAlign: "center",
-          fontFamily: "fantasy",
+          paddingTop: "20px",
+          paddingBottom: "20px",
+          backgroundColor: "white",
         }}
       >
-        Edit Product
-      </h2>
-      <Link to="/">Home</Link>
-      {loaded && (
-        <ProductForm
-          onSubmitProp={updateProduct}
-          initialTitle={product.title}
-          initialPrice={product.price}
-          initialBrand={product.brand}
-          initialQuantity={product.quantity}
-          initialAbout={product.about}
-          initialImageLink={product.imageLink}
-          errors={errors}
-        />
-      )}
+        <h2
+          style={{
+            maxWidth: "500px",
+            width: "100%",
+            margin: "auto",
+            textAlign: "center",
+            fontFamily: "fantasy",
+          }}
+        >
+          Edit Product
+        </h2>
+        <p style = {{ textAlign: "center" }}>
+          <Link to="/home">Home</Link>
+        </p>
+        {authError && <h3>{authError}</h3> }
+        {loaded && (
+          <ProductForm
+            onSubmitProp={updateProduct}
+            initialTitle={product.title}
+            initialPrice={product.price}
+            initialBrand={product.brand}
+            initialQuantity={product.quantity}
+            initialAbout={product.about}
+            initialImageLink={product.imageLink}
+            errors={errors}
+          />
+        )}
+      </div>
     </div>
   );
 }
